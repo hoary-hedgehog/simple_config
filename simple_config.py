@@ -153,10 +153,10 @@ class SimpleConfig():
 
 
 if __name__ == '__main__':
-    try: 
+    try:
         my_conf = SimpleConfig(
 #                _ = 'test_data',
-#                _help_text = help_text, 
+#                _help_text = help_text,
 #                _separator = '::',
                 line_count =  10,
                 t =  None,
@@ -169,9 +169,7 @@ if __name__ == '__main__':
 #        my_conf.save('simple.conf')
 #        my_conf.load('simple.conf')
         if my_conf.t:
-            [print('{} * {} = {}'.format(x, y, x*y)) if y else print()
-            for x in range(1, my_conf.line_count) for y in range(my_conf.line_count)]
+            [print('{} * {} = {}'.format(x, y, x*y)) if y else print() for x in range(1, my_conf.line_count) for y in range(my_conf.line_count)]
         my_conf.show_help('no error!')
     except ConfigError as em:
         print(em)
-    
