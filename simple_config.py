@@ -90,7 +90,7 @@ class SimpleConfig():
                     self.show_help('undefined key({})'.format(key))
             if self._defaults[key] is None:
                 result = True
-            elif type(self._defaults[key]) is bool:
+            elif isinstance(self._defaults[key], bool):
                 if val is None:
                     result = False if getattr(self, key) else True
                 elif val.upper() == "FALSE":
@@ -99,11 +99,11 @@ class SimpleConfig():
                     result = True
                 else:
                     self.show_help('wrong value({}: {})'.format(key, val))
-            elif type(self._defaults[key]) is str:
+            elif isinstance(self._defaults[key], str):
                 if val is None:
                     val = get_val()
                 result = val
-            elif type(self._defaults[key]) is int:
+            elif isinstance(self._defaults[key], int):
                 result = 1
                 if val is None:
                     val = get_val(error = False)
@@ -111,7 +111,7 @@ class SimpleConfig():
                     result = int(val)
                 elif val and val.count(key[0]) == len(val):
                     result += len(val)
-            elif type(self._defaults[key]) is float:
+            elif isinstance(self._defaults[key], float):
                 if val is None:
                     val = get_val()
                 result = float(val)
@@ -166,8 +166,8 @@ if __name__ == '__main__':
                 bool_val = True,
                                 )
         
-        my_conf.save('simple.conf')
-        my_conf.load('simple.conf')
+#        my_conf.save('simple.conf')
+#        my_conf.load('simple.conf')
         if my_conf.t:
             [print('{} * {} = {}'.format(x, y, x*y)) if y else print()
             for x in range(1, my_conf.line_count) for y in range(my_conf.line_count)]
